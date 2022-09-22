@@ -1,0 +1,194 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+			<!-- PAGE HERO
+			============================================= -->	
+			<div id="locations-page" class="page-hero-section division">
+				<div class="container">	
+					<div class="row">	
+						<div class="col-lg-10 offset-lg-1">
+							<div class="hero-txt text-center white-color">
+
+								<!-- Breadcrumb -->
+								<div id="breadcrumb">
+									<div class="row">						
+										<div class="col">
+											<div class="breadcrumb-nav">
+												<nav aria-label="breadcrumb">
+												  	<ol class="breadcrumb">
+												    	<li class="breadcrumb-item"><a href="demo-1.html">Home</a></li>
+												    	<li class="breadcrumb-item active" aria-current="page">Locations</li>
+												  	</ol>
+												</nav>
+											</div>
+										</div>
+									</div> 
+								</div>
+
+								<!-- Title -->
+								<h2 class="h2-xl">Our Locations</h2>
+
+							</div>
+						</div>	
+					</div>	  <!-- End row -->
+				</div>	   <!-- End container --> 
+			</div>	<!-- END PAGE HERO -->	
+
+
+
+
+			<!-- CONTACTS-3
+			============================================= -->
+			<section id="contacts-3" class="bg-fixed wide-60 contacts-section division">				
+				<div class="container">
+					<div class="row">
+
+
+						<!-- LOCATION-1 -->
+						<div class="col-md-6 col-lg-4">
+							<div class="cbox-3 text-center">
+
+								<!-- Image --> 
+								<div class="hover-overlay"> 
+									<img class="img-fluid" src="{% static 'main/images/location-1.jpg'%}" alt="location-image" />
+								</div>
+							
+								<!-- Text -->
+								<div class="cbox-3-txt">
+
+									<!-- Location -->	
+									<h5 class="h5-xl red-color">Downtown</h5>
+
+									<!-- Phone -->	
+									<h6 class="h6-xl">Phone: <span><a href="tel:123456789">789-654-3210</a></span></h6>
+
+									<!-- Address -->		
+									<h6 class="h6-lg mt-20">Address</h6>
+									<p class="grey-color">8721 M Central Avenue,</p>  
+									<p class="grey-color">Los Angeles, CA 90036</p> 
+
+									<!-- Working Hours -->	
+									<p class="grey-color">Daily 11AM - 10PM</p> 
+
+								</div>
+
+							</div>
+						</div>
+
+
+						<!-- LOCATION-2 -->
+						<div class="col-md-6 col-lg-4">
+							<div class="cbox-3 text-center">
+
+								<!-- Image --> 
+								<div class="hover-overlay"> 
+									<img class="img-fluid" src="{% static 'main/images/location-2.jpg'%}" alt="location-image" />
+								</div>
+							
+								<!-- Text -->
+								<div class="cbox-3-txt">
+
+									<!-- Location -->	
+									<h5 class="h5-xl red-color">Central City</h5>
+
+									<!-- Phone -->	
+									<h6 class="h6-xl">Phone: <span><a href="tel:123456789">789-456-0123</a></span></h6>
+
+									<!-- Address -->		
+									<h6 class="h6-lg mt-20">Address</h6>
+									<p class="grey-color">148 D Central Avenue,</p> 
+									<p class="grey-color">Los Angeles, CA 90012</p>  
+
+									<!-- Working Hours -->	
+									<p class="grey-color">Daily 11AM - 10PM</p> 
+
+								</div>
+
+							</div>
+						</div>
+
+
+						<!-- LOCATION-3 -->
+						<div class="col-md-6 col-lg-4">
+							<div class="cbox-3 text-center">
+
+								<!-- Image --> 
+								<div class="hover-overlay"> 
+									<img class="img-fluid" src="{% static 'main/images/location-3.jpg'%}" alt="location-image" />
+								</div>
+							
+								<!-- Text -->
+								<div class="cbox-3-txt">
+
+									<!-- Location -->	
+									<h5 class="h5-xl red-color">Hollywood</h5>
+
+									<!-- Phone -->	
+									<h6 class="h6-xl">Phone: <span><a href="tel:123456789">789-645-0123</a></span></h6>
+
+									<!-- Address -->		
+									<h6 class="h6-lg mt-20">Address</h6>
+									<p class="grey-color">678 W Hollywood Way,</p> 
+									<p class="grey-color">Burbank CA 91505</p>  
+
+									<!-- Working Hours -->	
+									<p class="grey-color">Daily 10AM - 10PM</p> 
+
+								</div>
+
+							</div>
+						</div>	
+
+					</div>    <!-- End row -->
+
+
+				</div>	   <!-- End container -->		
+			</section>	<!-- END CONTACTS-3 -->
+
+
+
+
+			<!-- NEWSLETTER-1
+			============================================= -->
+			<section id="newsletter-1" class="mb-20 newsletter-section division">
+				<div class="container">
+					<div class="inner-bg bg-lightgrey">
+						<div class="row">
+
+
+							<!-- NEWSLETTER FORM -->
+							<div class="col-md-10 col-xl-8 offset-md-1 offset-xl-2">
+								<div class="newsletter-txt text-center">
+
+									<!-- Title -->
+									<h3 class="h3-sm">Subscribe To Newsletter</h3>
+
+									<!-- Text -->
+									<p class="p-md grey-color">Subscribe to the weekly newsletter for all the latest updates</p>
+
+									<!-- Form -->
+									<form class="newsletter-form">
+												
+										<div class="input-group">
+											<input type="email" class="form-control" placeholder="Your email address" required id="s-email">								
+											<span class="input-group-btn">
+												<button type="submit" class="btn btn-red tra-red-hover">Sign Up</button>
+											</span>										
+										</div>
+
+										<!-- Newsletter Form Notification -->	
+										<label for="s-email" class="form-notification"></label>
+													
+									</form>	
+
+								</div>
+							</div>	  <!-- END NEWSLETTER FORM -->
+
+
+						</div>	 <!-- End row -->
+					</div>    <!-- End Inner Bg -->	   
+				</div>	   <!-- End container -->
+			</section>	<!-- END NEWSLETTER-1 -->
+
+
+{% endblock content %}
