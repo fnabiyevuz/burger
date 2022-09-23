@@ -14,3 +14,30 @@ class Users(AbstractUser):
         swappable = 'AUTH_USER_MODEL'
 
 
+class Categories(models.Model):
+    image = models.CharField(max_length=25)
+    name = models.CharField(max_length=25)
+
+    def __str__(self):
+        return self.name
+
+
+class Products(models.Model):
+    category = models.ForeignKey(Categories, on_delete=models.CASCADE, related_name='prod_cat')
+    name = models.CharField(max_length=50)
+    price = models.PositiveIntegerField()
+    discount = models.PositiveIntegerField(null=True, blank=True)
+    description = models.TextField()
+    portion = models.PositiveIntegerField()
+    callories = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.name
+
+    
+class PImanges(models.Model):
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='image_prod')
+    image = models.ImageField(upload_to='product')
+
+    def __str__(self):
+        return self.product.name

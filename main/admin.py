@@ -23,3 +23,7 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(Users, UserAdmin)
+
+admin.site.register(Categories)
+admin.site.register(Products)
+admin.site.register(PImanges)
