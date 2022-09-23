@@ -24,3 +24,4 @@ class ContactView(TemplateView):
 
 class CartView(TemplateView):
     template_name = "main/cart.html"
+    
