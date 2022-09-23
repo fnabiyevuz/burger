@@ -41,3 +41,16 @@ class PImanges(models.Model):
 
     def __str__(self):
         return self.product.name
+    
+
+class Shop(models.Model):
+    sts = 
+    client = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='shop_user')
+    total = models.PositiveIntegerField(default=0)
+    status = models.PositiveIntegerField(default=0)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.client.first_name
+
+

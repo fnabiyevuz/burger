@@ -60,8 +60,8 @@
 							<div class="col-lg-12 text-center">
 						 		<ul class="tabs-1 ico-55 red-tabs clearfix">
 
-						 			{% for c in categories %}
-										<li class="tab-link {% if categories.first == c %}current{% endif %}" data-tab="tab-{{c.id}}">
+						 			{% for c in categories4 %}
+										<li class="tab-link {% if categories4.first == c %}current{% endif %}" data-tab="tab-{{c.id}}">
 											<span class="flaticon-{{ c.image }}"></span> 
 											<h5 class="h5-sm">{{ c.name }}</h5>
 										</li>
@@ -76,9 +76,9 @@
 				 	<!-- TABS CONTENT -->
 				 	<div id="tabs-content">
 
-						{% for c in categories %}
+						{% for c in categories4 %}
 							<!-- TAB-1 CONTENT -->
-							<div id="tab-{{ c.id }}" class="tab-content {% if categories.first == c %} current {% endif %}">
+							<div id="tab-{{ c.id }}" class="tab-content {% if categories4.first == c %} current {% endif %}">
 								<div class="row">
 									{% for p in c.prod_cat.all %}
 										<!-- MENU ITEM #1 -->
@@ -89,7 +89,7 @@
 												<div class="menu-7-img rel">
 						
 													<!-- Image -->
-													<img class="img-fluid" src="{{ p.image_prod.first.image.url }}" alt="menu-image" />
+													<a href="/product/{{ p.pk }}"><img class="img-fluid" src="{{ p.image_prod.first.image.url }}" alt="menu-image" /></a>
 
 													<!-- Price -->
 													<div class="menu-7-price bg-coffee">
@@ -246,526 +246,68 @@
 
 					<div class="row">
 
+						{% for b in burgers %}
+							<!-- MENU ITEM #1 -->
+							<div class="col-sm-6 col-lg-3">
+								<div class="menu-6-item bg-white">
 
-						<!-- MENU ITEM #1 -->
-						<div class="col-sm-6 col-lg-3">
-							<div class="menu-6-item bg-white">
+									<!-- IMAGE -->
+									<div class="menu-6-img rel">
+										<div class="hover-overlay">
 
-								<!-- IMAGE -->
-								<div class="menu-6-img rel">
-									<div class="hover-overlay">
+											<!-- Image -->
+											<img class="img-fluid" src="{{ b.image_prod.first.image.url }}" alt="menu-image" />	
 
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'main/images/menu/burger-11.jpg'%}" alt="menu-image" />
+											<!-- Zoom Icon -->
+											<div class="menu-img-zoom ico-25">
+												<a href="{{ b.image_prod.first.image.url }}" class="image-link">
+													<span class="flaticon-zoom"></span>
+												</a>
+											</div> 
 
-										<!-- Item Code -->
-										<span class="item-code bg-tra-dark">Code: 0850</span>	
-
-										<!-- Zoom Icon -->
-										<div class="menu-img-zoom ico-25">
-											<a href="{% static 'main/images/menu/burger-11.jpg'%}" class="image-link">
-												<span class="flaticon-zoom"></span>
-											</a>
-										</div> 
-
-									</div>
-								</div>
-
-								<!-- TEXT -->
-								<div class="menu-6-txt rel">
-
-									<!-- Rating -->	
-									<div class="item-rating">
-										<div class="stars-rating stars-lg">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star-half-alt"></i>
-										</div>		
+										</div>
 									</div>
 
-									<!-- Like Icon -->
-									<div class="like-ico ico-25">
-										<a href="#"><span class="flaticon-heart"></span></a>
-									</div>
+									<!-- TEXT -->
+									<div class="menu-6-txt rel">
 
-									<!-- Title -->
-									<h5 class="h5-sm">Crispy Chicken</h5>
+										<!-- Rating -->	
+										<div class="item-rating">
+											<div class="stars-rating stars-lg">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star-half-alt"></i>
+											</div>		
+										</div>
 
-									<!-- Description -->	
-									<p class="grey-color">Chicken breast, chilli sauce, tomatoes, pickles, coleslaw</p>
+										<!-- Like Icon -->
+										<div class="like-ico ico-25">
+											<a href="#"><span class="flaticon-heart"></span></a>
+										</div>
 
-									<!-- Price -->
-									<div class="menu-6-price bg-coffee">
-										<h5 class="h5-xs yellow-color">$8.50</h5>
-									</div>
+										<!-- Title -->
+										<h5 class="h5-sm">{{ b.name }}</h5>
 
-									<!-- Add To Cart -->
-									<div class="add-to-cart bg-yellow ico-10">
-										<a href="product-single.html"><span class="flaticon-shopping-bag"></span> Add to Cart</a>
-									</div>
+										<!-- Description -->	
+										<p class="grey-color">{{ b.description }}</p>
 
-								</div>
+										<!-- Price -->
+										<div class="menu-6-price bg-coffee">
+											<h5 class="h5-xs yellow-color">{% if b.discount %}{{ b.discount }}{% else %}{{ b.price }}{% endif %} $</h5>
+										</div>
 
-							</div>
-						</div>	<!-- END MENU ITEM #1 -->
+										<!-- Add To Cart -->
+										<div class="add-to-cart bg-yellow ico-10">
+											<a href="product-single.html"><span class="flaticon-shopping-bag"></span> Add to Cart</a>
+										</div>
 
-
-						<!-- MENU ITEM #2 -->
-						<div class="col-sm-6 col-lg-3">
-							<div class="menu-6-item bg-white">
-
-								<!-- IMAGE -->
-								<div class="menu-6-img rel">
-									<div class="hover-overlay">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'main/images/menu/burger-12.jpg'%}" alt="menu-image" />
-
-										<!-- Item Code -->
-										<span class="item-code bg-tra-dark">Code: 0858</span>	
-
-										<!-- Zoom Icon -->
-										<div class="menu-img-zoom ico-25">
-											<a href="{% static 'main/images/menu/burger-12.jpg'%}" class="image-link">
-												<span class="flaticon-zoom"></span>
-											</a>
-										</div> 
-
-									</div>
-								</div>
-
-								<!-- TEXT -->
-								<div class="menu-6-txt rel">
-
-									<!-- Rating -->	
-									<div class="item-rating">
-										<div class="stars-rating stars-lg">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="far fa-star"></i>
-										</div>		
-									</div>
-
-									<!-- Like Icon -->
-									<div class="like-ico ico-25">
-										<a href="#"><span class="flaticon-heart"></span></a>
-									</div>
-
-									<!-- Title -->
-									<h5 class="h5-sm">Ultimate Bacon</h5>
-
-									<!-- Description -->	
-									<p class="grey-color">House beef patty, cheddar cheese, bacon, onion, mustard</p>
-
-									<!-- Price -->
-									<div class="menu-6-price bg-coffee">
-										<h5 class="h5-xs yellow-color">$9.99</h5>
-									</div>
-
-									<!-- Add To Cart -->
-									<div class="add-to-cart bg-yellow ico-10">
-										<a href="product-single.html"><span class="flaticon-shopping-bag"></span> Add to Cart</a>
 									</div>
 
 								</div>
-
-							</div>
-						</div>	<!-- END MENU ITEM #2 -->
-
-
-						<!-- MENU ITEM #3 -->
-						<div class="col-sm-6 col-lg-3">
-							<div class="menu-6-item bg-white">
-
-								<!-- IMAGE -->
-								<div class="menu-6-img rel">
-									<div class="hover-overlay">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'main/images/menu/burger-13.jpg'%}" alt="menu-image" />
-
-										<!-- Item Code -->
-										<span class="item-code bg-tra-dark">Code: 0847</span>	
-
-										<!-- Zoom Icon -->
-										<div class="menu-img-zoom ico-25">
-											<a href="{% static 'main/images/menu/burger-13.jpg'%}" class="image-link">
-												<span class="flaticon-zoom"></span>
-											</a>
-										</div> 
-
-									</div>
-								</div>
-
-								<!-- TEXT -->
-								<div class="menu-6-txt rel">
-
-									<!-- Rating -->	
-									<div class="item-rating">
-										<div class="stars-rating stars-lg">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-										</div>		
-									</div>
-
-									<!-- Like Icon -->
-									<div class="like-ico ico-25">
-										<a href="#"><span class="flaticon-heart"></span></a>
-									</div>
-
-									<!-- Title -->
-									<h5 class="h5-sm">Black Sheep</h5>
-
-									<!-- Description -->	
-									<p class="grey-color">American cheese, tomato relish, avocado, lettuce, red onion</p>
-
-									<!-- Price -->
-									<div class="menu-6-price bg-coffee">
-										<h5 class="h5-xs yellow-color">$9.75</h5>
-									</div>
-
-									<!-- Add To Cart -->
-									<div class="add-to-cart bg-yellow ico-10">
-										<a href="product-single.html"><span class="flaticon-shopping-bag"></span> Add to Cart</a>
-									</div>
-
-								</div>
-
-							</div>
-						</div>	<!-- END MENU ITEM #3 -->
-
-
-						<!-- MENU ITEM #4 -->
-						<div class="col-sm-6 col-lg-3">
-							<div class="menu-6-item bg-white">
-
-								<!-- IMAGE -->
-								<div class="menu-6-img rel">
-									<div class="hover-overlay">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'main/images/menu/burger-14.jpg'%}" alt="menu-image" />
-
-										<!-- Item Code -->
-										<span class="item-code bg-tra-dark">Code: 0859</span>	
-
-										<!-- Zoom Icon -->
-										<div class="menu-img-zoom ico-25">
-											<a href="{% static 'main/images/menu/burger-14.jpg'%}" class="image-link">
-												<span class="flaticon-zoom"></span>
-											</a>
-										</div> 
-
-									</div>
-								</div>
-
-								<!-- TEXT -->
-								<div class="menu-6-txt rel">
-
-									<!-- Rating -->	
-									<div class="item-rating">
-										<div class="stars-rating stars-lg">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star-half-alt"></i>
-										</div>		
-									</div>
-
-									<!-- Like Icon -->
-									<div class="like-ico ico-25">
-										<a href="#"><span class="flaticon-heart"></span></a>
-									</div>
-
-									<!-- Title -->
-									<h5 class="h5-sm">Double Burger</h5>
-
-									<!-- Description -->	
-									<p class="grey-color">2 beef patties, cheddar cheese, mustard, pickles, tomatoes</p>
-
-									<!-- Price -->
-									<div class="menu-6-price bg-coffee">
-										<h5 class="h5-xs yellow-color">$10.35</h5>
-									</div>
-
-									<!-- Add To Cart -->
-									<div class="add-to-cart bg-yellow ico-10">
-										<a href="product-single.html"><span class="flaticon-shopping-bag"></span> Add to Cart</a>
-									</div>
-
-								</div>
-
-							</div>
-						</div>	<!-- END MENU ITEM #4 -->
-
-
-						<!-- MENU ITEM #5 -->
-						<div class="col-sm-6 col-lg-3">
-							<div class="menu-6-item bg-white">
-
-								<!-- IMAGE -->
-								<div class="menu-6-img rel">
-									<div class="hover-overlay">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'main/images/menu/burger-15.jpg'%}" alt="menu-image" />
-
-										<!-- Item Code -->
-										<span class="item-code bg-tra-dark">Code: 0861</span>	
-
-										<!-- Zoom Icon -->
-										<div class="menu-img-zoom ico-25">
-											<a href="{% static 'main/images/menu/burger-15.jpg'%}" class="image-link">
-												<span class="flaticon-zoom"></span>
-											</a>
-										</div> 
-
-									</div>
-								</div>
-
-								<!-- TEXT -->
-								<div class="menu-6-txt rel">
-
-									<!-- Rating -->	
-									<div class="item-rating">
-										<div class="stars-rating stars-lg">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star-half-alt"></i>
-										</div>		
-									</div>
-
-									<!-- Like Icon -->
-									<div class="like-ico ico-25">
-										<a href="#"><span class="flaticon-heart"></span></a>
-									</div>
-
-									<!-- Title -->
-									<h5 class="h5-sm">Turkey Burger</h5>
-
-									<!-- Description -->
-									<p class="grey-color">Turkey, cheddar cheese, onion, lettuce, tomatoes, pickles</p>
-
-									<!-- Price -->
-									<div class="menu-6-price bg-coffee">
-										<h5 class="h5-xs yellow-color">$8.95</h5>
-									</div>
-
-									<!-- Add To Cart -->
-									<div class="add-to-cart bg-yellow ico-10">
-										<a href="product-single.html"><span class="flaticon-shopping-bag"></span> Add to Cart</a>
-									</div>
-
-								</div>
-
-							</div>
-						</div>	<!-- END MENU ITEM #5 -->
-
-
-						<!-- MENU ITEM #6 -->
-						<div class="col-sm-6 col-lg-3">
-							<div class="menu-6-item bg-white">
-
-								<!-- IMAGE -->
-								<div class="menu-6-img rel">
-									<div class="hover-overlay">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'main/images/menu/burger-16.jpg'%}" alt="menu-image" />
-
-										<!-- Item Code -->
-										<span class="item-code bg-tra-dark">Code: 0840</span>	
-
-										<!-- Zoom Icon -->
-										<div class="menu-img-zoom ico-25">
-											<a href="{% static 'main/images/menu/burger-16.jpg'%}" class="image-link">
-												<span class="flaticon-zoom"></span>
-											</a>
-										</div> 
-
-									</div>
-								</div>
-
-								<!-- TEXT -->
-								<div class="menu-6-txt rel">
-
-									<!-- Rating -->	
-									<div class="item-rating">
-										<div class="stars-rating stars-lg">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="far fa-star"></i>
-										</div>		
-									</div>
-
-									<!-- Like Icon -->
-									<div class="like-ico ico-25">
-										<a href="#"><span class="flaticon-heart"></span></a>
-									</div>
-
-									<!-- Title -->
-									<h5 class="h5-sm">Smokey House</h5>
-
-									<!-- Description -->
-									<p class="grey-color">Beef patty, cheddar cheese, onion, lettuce, tomatoes, pickles</p>
-
-									<!-- Price -->
-									<div class="menu-6-price bg-coffee">
-										<h5 class="h5-xs yellow-color">$9.50</h5>
-									</div>
-
-									<!-- Add To Cart -->
-									<div class="add-to-cart bg-yellow ico-10">
-										<a href="product-single.html"><span class="flaticon-shopping-bag"></span> Add to Cart</a>
-									</div>
-
-								</div>
-
-							</div>
-						</div>	<!-- END MENU ITEM #6 -->
-
-
-						<!-- MENU ITEM #7 -->
-						<div class="col-sm-6 col-lg-3">
-							<div class="menu-6-item bg-white">
-
-								<!-- IMAGE -->
-								<div class="menu-6-img rel">
-									<div class="hover-overlay">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'main/images/menu/burger-17.jpg'%}" alt="menu-image" />
-
-										<!-- Item Code -->
-										<span class="item-code bg-tra-dark">Code: 0862</span>	
-
-										<!-- Zoom Icon -->
-										<div class="menu-img-zoom ico-25">
-											<a href="{% static 'main/images/menu/burger-17.jpg'%}" class="image-link">
-												<span class="flaticon-zoom"></span>
-											</a>
-										</div> 
-
-									</div>
-								</div>
-
-								<!-- TEXT -->
-								<div class="menu-6-txt rel">
-
-									<!-- Rating -->	
-									<div class="item-rating">
-										<div class="stars-rating stars-lg">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-										</div>		
-									</div>
-
-									<!-- Like Icon -->
-									<div class="like-ico ico-25">
-										<a href="#"><span class="flaticon-heart"></span></a>
-									</div>
-
-									<!-- Title -->
-									<h5 class="h5-sm">Classic Burger</h5>
-
-									<!-- Description -->
-									<p class="grey-color">Beef, cheddar cheese, ketchup, mustard, pickles, onion</p>
-
-									<!-- Price -->
-									<div class="menu-6-price bg-coffee">
-										<h5 class="h5-xs yellow-color">$7.95</h5>
-									</div>
-
-									<!-- Add To Cart -->
-									<div class="add-to-cart bg-yellow ico-10">
-										<a href="product-single.html"><span class="flaticon-shopping-bag"></span> Add to Cart</a>
-									</div>
-
-								</div>
-
-							</div>
-						</div>	<!-- END MENU ITEM #7 -->
-
-
-						<!-- MENU ITEM #8 -->
-						<div class="col-sm-6 col-lg-3">
-							<div class="menu-6-item bg-white">
-
-								<!-- IMAGE -->
-								<div class="menu-6-img rel">
-									<div class="hover-overlay">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'main/images/menu/burger-18.jpg'%}" alt="menu-image" />
-
-										<!-- Item Code -->
-										<span class="item-code bg-tra-dark">Code: 0844</span>	
-
-										<!-- Zoom Icon -->
-										<div class="menu-img-zoom ico-25">
-											<a href="{% static 'main/images/menu/burger-18.jpg'%}" class="image-link">
-												<span class="flaticon-zoom"></span>
-											</a>
-										</div> 
-
-									</div>
-								</div>
-
-								<!-- TEXT -->
-								<div class="menu-6-txt rel">
-
-									<!-- Rating -->	
-									<div class="item-rating">
-										<div class="stars-rating stars-lg">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="far fa-star"></i>
-										</div>		
-									</div>
-
-									<!-- Like Icon -->
-									<div class="like-ico ico-25">
-										<a href="#"><span class="flaticon-heart"></span></a>
-									</div>
-
-									<!-- Title -->
-									<h5 class="h5-sm">Vegan Burger</h5>
-
-									<!-- Description -->
-									<p class="grey-color">Mushroom patty, vegan cheese, lettuce, tomatoes, avocado</p>
-
-									<!-- Price -->
-									<div class="menu-6-price bg-coffee">
-										<h5 class="h5-xs yellow-color">$8.95</h5>
-									</div>
-
-									<!-- Add To Cart -->
-									<div class="add-to-cart bg-yellow ico-10">
-										<a href="product-single.html"><span class="flaticon-shopping-bag"></span> Add to Cart</a>
-									</div>
-
-								</div>
-
-							</div>
-						</div>	<!-- END MENU ITEM #8 -->
-
+							</div>	<!-- END MENU ITEM #1 -->
+						{% endfor %}
 
 					</div>	  <!-- End row -->	
 				</div>	   <!-- End container -->
@@ -797,90 +339,26 @@
 								<!-- Icons List -->	
 								<div class="abox-1-wrapper ico-75">
 									<div class="row">
+										{% for c in categories6 %}
+											<!-- ABOUT BOX #1 -->		
+											<div class="col-sm-4 col-md-2">
+												<div class="abox-1 mb-40">
 
-										<!-- ABOUT BOX #1 -->		
-										<div class="col-sm-4 col-md-2">
-											<div class="abox-1 mb-40">
+													<!-- Icon --> 
+													<div class="abox-1-ico grey-color"><span class="flaticon-{{c.image}}"></span></div>
 
-												<!-- Icon --> 
-												<div class="abox-1-ico grey-color"><span class="flaticon-burger"></span></div>
+													<!-- Text -->
+													<h6 class="h6-xl">{{ c.name }}</h6>
 
-												<!-- Text -->
-												<h6 class="h6-xl">Burgers</h6>
-
+												</div>
 											</div>
-										</div>
-
-										<!-- ABOUT BOX #2 -->		
-										<div class="col-sm-4 col-md-2">
-											<div class="abox-1 mb-40">
-
-												<!-- Icon --> 
-												<div class="abox-1-ico grey-color"><span class="flaticon-french-fries"></span></div>
-
-												<!-- Text -->
-												<h6 class="h6-xl">Fries</h6>
-
-											</div>
-										</div>
-
-										<!-- ABOUT BOX #3 -->		
-										<div class="col-sm-4 col-md-2">
-											<div class="abox-1 mb-40">
-
-												<!-- Icon --> 
-												<div class="abox-1-ico grey-color"><span class="flaticon-fried-chicken"></span></div>
-
-												<!-- Text -->
-												<h6 class="h6-xl">Chicken</h6>
-
-											</div>
-										</div>
-
-										<!-- ABOUT BOX #4 -->		
-										<div class="col-sm-4 col-md-2">
-											<div class="abox-1 mb-40">
-
-												<!-- Icon --> 
-												<div class="abox-1-ico grey-color"><span class="flaticon-salad"></span></div>
-
-												<!-- Text -->
-												<h6 class="h6-xl">Salads</h6>
-
-											</div>
-										</div>
-
-										<!-- ABOUT BOX #5 -->		
-										<div class="col-sm-4 col-md-2">
-											<div class="abox-1 mb-40">
-
-												<!-- Icon --> 
-												<div class="abox-1-ico grey-color"><span class="flaticon-donut"></span></div>
-
-												<!-- Text -->
-												<h6 class="h6-xl">Desserts</h6>
-
-											</div>
-										</div>
-
-										<!-- ABOUT BOX #6 -->		
-										<div class="col-sm-4 col-md-2">
-											<div class="abox-1 mb-40">
-
-												<!-- Icon --> 
-												<div class="abox-1-ico grey-color"><span class="flaticon-drinks"></span></div>
-
-												<!-- Text -->
-												<h6 class="h6-xl">Drinks</h6>
-
-											</div>
-										</div>
+										{% endfor %}
 
 									</div>
 								</div>	<!-- End Icons List -->
 
 								<!-- Button -->
-								<a href="menu-3.html" class="btn btn-md btn-red tra-red-hover">Explore Full Menu</a>
+								<a href="/menu/" class="btn btn-md btn-red tra-red-hover">Explore Full Menu</a>
 
 							</div>
 						</div>	<!-- END ABOUT TEXT -->
@@ -941,261 +419,57 @@
 							<div class="pbox-carousel">
 								<div class="owl-carousel promo-8-carousel">
 							
-													
-									<!-- PROMO BOX #2 -->
-									<div class="pbox-14-item">
+									{% for f in fries %}
+										<!-- PROMO BOX #2 -->
+										<div class="pbox-14-item">
 
-										<!-- IMAGE -->
-										<div class="pbox-14-img rel">
-				
-											<!-- Image -->
-											<img class="img-fluid" src="{% static 'main/images/menu/side-04.png'%}" alt="menu-image" />
+											<!-- IMAGE -->
+											<div class="pbox-14-img rel">
+					
+												<!-- Image -->
+												<img class="img-fluid" src="{{ f.image_prod.first.image.url }}" alt="menu-image" />
 
-											<!-- Price -->
-											<div class="pbox-14-price bg-coffee">
-												<h5 class="h5-xs yellow-color">$4.99</h5>
+												<!-- Price -->
+												<div class="pbox-14-price bg-coffee">
+													<h5 class="h5-xs yellow-color">{% if f.discount %} {{ f.discount }}{% else %} {{ f.price }} {% endif %} $</h5>
+												</div>
+
+												<!-- Rating -->
+												<div class="item-rating">
+													<div class="stars-rating stars-lg">
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star-half-alt"></i>
+													</div>		
+												</div>	
+
+												<!-- Like Icon -->
+												<div class="like-ico ico-20">
+													<a href="#"><span class="flaticon-heart"></span></a>
+												</div>
+
 											</div>
 
-											<!-- Rating -->
-											<div class="item-rating">
-												<div class="stars-rating stars-lg">
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star-half-alt"></i>
-												</div>		
-											</div>	
+											<!-- TEXT -->
+											<div class="pbox-14-txt rel">
 
-											<!-- Like Icon -->
-											<div class="like-ico ico-20">
-												<a href="#"><span class="flaticon-heart"></span></a>
+												<!-- Title -->
+												<h5 class="h5-md">{{ f.name }}</h5>
+
+												<!-- Description -->
+												<p class="grey-color">{{ f.description }}</p>
+
+												<!-- Button -->
+												<a href="product-single.html" class="btn btn-sm btn-tra-grey yellow-hover">
+													<span class="flaticon-shopping-bag"></span> Add to Cart
+												</a>
+
 											</div>
 
-										</div>
-
-										<!-- TEXT -->
-										<div class="pbox-14-txt rel">
-
-											<!-- Title -->
-											<h5 class="h5-md">Chicken Nuggets</h5>
-
-											<!-- Description -->
-											<p class="grey-color">Integer ultrice an aligula lectus purus magna and tempor</p>
-
-											<!-- Button -->
-											<a href="product-single.html" class="btn btn-sm btn-tra-grey yellow-hover">
-												<span class="flaticon-shopping-bag"></span> Add to Cart
-											</a>
-
-										</div>
-
-									</div>	<!-- END PROMO BOX #2 -->
-
-														
-									<!-- PROMO BOX #3 -->
-									<div class="pbox-14-item">
-
-										<!-- IMAGE -->
-										<div class="pbox-14-img rel">
-				
-											<!-- Image -->
-											<img class="img-fluid" src="{% static 'main/images/menu/side-03.png'%}" alt="menu-image" />
-
-											<!-- Price -->
-											<div class="pbox-14-price bg-coffee">
-												<h5 class="h5-xs yellow-color">$5.25</h5>
-											</div>
-
-											<!-- Rating -->
-											<div class="item-rating">
-												<div class="stars-rating stars-lg">
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star-half-alt"></i>
-												</div>		
-											</div>	
-
-											<!-- Like Icon -->
-											<div class="like-ico ico-20">
-												<a href="#"><span class="flaticon-heart"></span></a>
-											</div>
-
-										</div>
-
-										<!-- TEXT -->
-										<div class="pbox-14-txt rel">
-
-											<!-- Title -->
-											<h5 class="h5-md">Mozzarella Sticks</h5>
-
-											<!-- Description -->
-											<p class="grey-color">Integer ultrice an aligula lectus purus magna and tempor</p>
-
-											<!-- Button -->
-											<a href="product-single.html" class="btn btn-sm btn-tra-grey yellow-hover">
-												<span class="flaticon-shopping-bag"></span> Add to Cart
-											</a>
-
-										</div>
-
-									</div>	<!-- END PROMO BOX #3 -->
-
-																
-									<!-- PROMO BOX #4 -->
-									<div class="pbox-14-item">
-
-										<!-- IMAGE -->
-										<div class="pbox-14-img rel">
-				
-											<!-- Image -->
-											<img class="img-fluid" src="{% static 'main/images/menu/side-02.png'%}" alt="menu-image" />
-
-											<!-- Price -->
-											<div class="pbox-14-price bg-coffee">
-												<h5 class="h5-xs yellow-color">$3.69</h5>
-											</div>
-
-											<!-- Rating -->
-											<div class="item-rating">
-												<div class="stars-rating stars-lg">
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star-half-alt"></i>
-												</div>		
-											</div>	
-
-											<!-- Like Icon -->
-											<div class="like-ico ico-20">
-												<a href="#"><span class="flaticon-heart"></span></a>
-											</div>
-
-										</div>
-
-										<!-- TEXT -->
-										<div class="pbox-14-txt rel">
-
-											<!-- Title -->
-											<h5 class="h5-md">French Fries</h5>
-
-											<!-- Description -->
-											<p class="grey-color">Integer ultrice an aligula lectus purus magna and tempor</p>
-
-											<!-- Button -->
-											<a href="product-single.html" class="btn btn-sm btn-tra-grey yellow-hover">
-												<span class="flaticon-shopping-bag"></span> Add to Cart
-											</a>
-
-										</div>
-
-									</div>	<!-- END PROMO BOX #4 -->
-
-																
-									<!-- PROMO BOX #5 -->
-									<div class="pbox-14-item">
-
-										<!-- IMAGE -->
-										<div class="pbox-14-img rel">
-				
-											<!-- Image -->
-											<img class="img-fluid" src="{% static 'main/images/menu/side-01.png'%}" alt="menu-image" />
-
-											<!-- Price -->
-											<div class="pbox-14-price bg-coffee">
-												<h5 class="h5-xs yellow-color">$3.85</h5>
-											</div>
-
-											<!-- Rating -->
-											<div class="item-rating">
-												<div class="stars-rating stars-lg">
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star-half-alt"></i>
-												</div>		
-											</div>	
-
-											<!-- Like Icon -->
-											<div class="like-ico ico-20">
-												<a href="#"><span class="flaticon-heart"></span></a>
-											</div>
-
-										</div>
-
-										<!-- TEXT -->
-										<div class="pbox-14-txt rel">
-
-											<!-- Title -->
-											<h5 class="h5-md">Onion Rings</h5>
-
-											<!-- Description -->
-											<p class="grey-color">Integer ultrice an aligula lectus purus magna and tempor</p>
-
-											<!-- Button -->
-											<a href="product-single.html" class="btn btn-sm btn-tra-grey yellow-hover">
-												<span class="flaticon-shopping-bag"></span> Add to Cart
-											</a>
-
-										</div>
-
-									</div>	<!-- END PROMO BOX #5 -->
-
-																
-									<!-- PROMO BOX #6 -->
-									<div class="pbox-14-item">
-
-										<!-- IMAGE -->
-										<div class="pbox-14-img rel">
-				
-											<!-- Image -->
-											<img class="img-fluid" src="{% static 'main/images/menu/side-06.png'%}" alt="menu-image" />
-
-											<!-- Price -->
-											<div class="pbox-14-price bg-coffee">
-												<h5 class="h5-xs yellow-color">$5.25</h5>
-											</div>
-
-											<!-- Rating -->
-											<div class="item-rating">
-												<div class="stars-rating stars-lg">
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star"></i>
-													<i class="fas fa-star-half-alt"></i>
-												</div>		
-											</div>	
-
-											<!-- Like Icon -->
-											<div class="like-ico ico-20">
-												<a href="#"><span class="flaticon-heart"></span></a>
-											</div>
-
-										</div>
-
-										<!-- TEXT -->
-										<div class="pbox-14-txt rel">
-
-											<!-- Title -->
-											<h5 class="h5-md">Chicken Fingers</h5>
-
-											<!-- Description -->
-											<p class="grey-color">Integer ultrice an aligula lectus purus magna and tempor</p>
-
-											<!-- Button -->
-											<a href="product-single.html" class="btn btn-sm btn-tra-grey yellow-hover">
-												<span class="flaticon-shopping-bag"></span> Add to Cart
-											</a>
-
-										</div>
-
-									</div>	<!-- END PROMO BOX #6 -->
-														
+										</div>	<!-- END PROMO BOX #2 -->
+									{% endfor %}
 
 								</div>
 							</div>
@@ -1267,143 +541,6 @@
 					</div>    <!-- End row -->		
 				</div>	   <!-- End container -->	
 			</div>	<!-- END PROMO-3 -->
-
-
-
-
-			<!-- PROMO-8
-			============================================= -->
-			<section id="promo-8" class="wide-100 promo-section division">
-				<div class="container">
-					<div class="row">
-
-
-						<!-- PROMO BOX-1 -->
-						<div class="col-md-4">
-							<div class="pbox-8 row d-flex align-items-center">
-
-								<!-- Image -->
-								<div class="col-lg-6 rel">
-									<div class="pbox-8-img">
-										<div class="hover-overlay"> 	
-
-											<!-- Image -->
-											<img class="img-fluid" src="{% static 'main/images/img-24.jpg'%}" alt="promo-image" />
-
-											<!-- Item Code -->
-											<span class="item-code bg-yellow">Code: 0961</span>
-
-										</div>
-									</div>
-								</div>
-
-								<!-- Text -->
-								<div id="pb-8-1" class="col-lg-6">
-									<div class="pbox-8-txt">
-
-										<!-- Title -->		
-										<h5 class="h5-sm"><a href="product-single.html">Tuna Salad</a></h5>
-
-										<!-- Text -->
-										<p>Vitae sapien and justo aliquet and molestie</p>
-
-										<!-- Price -->
-										<div class="pbox-8-price">
-											<h5 class="h5-xl"><span class="red-color">$9.50</span></h5>
-										</div>
-
-									</div>
-								</div>
-
-							</div>
-						</div>	<!-- END PROMO BOX-1 -->
-
-
-						<!-- PROMO BOX-2 -->
-						<div class="col-md-4">
-							<div class="pbox-8 row d-flex align-items-center">
-
-								<!-- Image -->
-								<div class="col-lg-6 rel">
-									<div class="pbox-8-img">
-										<div class="hover-overlay"> 		
-
-											<!-- Image -->
-											<img class="img-fluid" src="{% static 'main/images/img-21.jpg'%}" alt="promo-image" />
-
-											<!-- Item Code -->
-											<span class="item-code bg-yellow">Code: 2136</span>
-
-										</div>
-									</div>
-								</div>
-
-								<!-- Text -->
-								<div id="pb-8-2" class="col-lg-6">
-									<div class="pbox-8-txt">
-
-										<!-- Title -->		
-										<h5 class="h5-sm"><a href="product-single.html">Crispy Chicken</a></h5>
-
-										<!-- Text -->
-										<p>Vitae sapien and justo aliquet and molestie</p>
-
-										<!-- Price -->
-										<div class="pbox-8-price">
-											<h5 class="h5-xl"><span class="red-color">$7.99</span></h5>
-										</div>
-
-									</div>
-								</div>
-
-							</div>
-						</div>	<!-- END PROMO BOX-2 -->
-
-
-						<!-- PROMO BOX-3 -->
-						<div class="col-md-4">
-							<div class="pbox-8 row d-flex align-items-center pbox-8-last">
-
-								<!-- Image -->
-								<div class="col-lg-6 rel">
-									<div class="pbox-8-img">
-										<div class="hover-overlay"> 		
-
-											<!-- Image -->
-											<img class="img-fluid" src="{% static 'main/images/img-25.jpg'%}" alt="promo-image" />
-
-											<!-- Item Code -->
-											<span class="item-code bg-yellow">Code: 2164</span>
-
-										</div>
-									</div>
-								</div>
-
-								<!-- Text -->
-								<div id="pb-8-3" class="col-lg-6">
-									<div class="pbox-8-txt">
-
-										<!-- Title -->		
-										<h5 class="h5-sm"><a href="product-single.html">Egg Sandwich</a></h5>
-
-										<!-- Text -->
-										<p>Vitae sapien and justo aliquet and molestie</p>
-
-										<!-- Price -->
-										<div class="pbox-8-price">
-											<h5 class="h5-xl"><span class="red-color">$13.49</span></h5>
-										</div>
-
-									</div>
-								</div>
-
-							</div>
-						</div>	<!-- END PROMO BOX-3 -->
-
-
-					</div>    <!-- End row -->		
-				</div>	   <!-- End container -->	
-			</section>	<!-- END PROMO-8 -->
 
 
 
@@ -1533,42 +670,42 @@
 													
 								<!-- BRAND LOGO IMAGE -->
 								<div class="brand-logo">
-									<img class="img-fluid" src="{% static 'main/images/brand-1.png'%}" alt="brand-logo" />
+									<img class="img-fluid" src="{% static 'main/images/brand-11.png'%}" alt="brand-logo" />
 								</div>
 													
 								<!-- BRAND LOGO IMAGE -->
 								<div class="brand-logo">
-									<img class="img-fluid" src="{% static 'main/images/brand-2.png'%}" alt="brand-logo" />
+									<img class="img-fluid" src="{% static 'main/images/brand-12.png'%}" alt="brand-logo" />
 								</div>
 													
 								<!-- BRAND LOGO IMAGE -->
 								<div class="brand-logo">
-									<img class="img-fluid" src="{% static 'main/images/brand-3.png'%}" alt="brand-logo" />
+									<img class="img-fluid" src="{% static 'main/images/brand-13.png'%}" alt="brand-logo" />
 								</div>
 													
 								<!-- BRAND LOGO IMAGE -->
 								<div class="brand-logo">
-									<img class="img-fluid" src="{% static 'main/images/brand-4.png'%}" alt="brand-logo" />
+									<img class="img-fluid" src="{% static 'main/images/brand-14.png'%}" alt="brand-logo" />
 								</div>
 													
 								<!-- BRAND LOGO IMAGE -->
 								<div class="brand-logo">
-									<img class="img-fluid" src="{% static 'main/images/brand-5.png'%}" alt="brand-logo">
+									<img class="img-fluid" src="{% static 'main/images/brand-15.png'%}" alt="brand-logo">
 								</div>
 													
 								<!-- BRAND LOGO IMAGE -->
 								<div class="brand-logo">
-									<img class="img-fluid" src="{% static 'main/images/brand-6.png'%}" alt="brand-logo" />
+									<img class="img-fluid" src="{% static 'main/images/brand-16.png'%}" alt="brand-logo" />
 								</div>
 
 								<!-- BRAND LOGO IMAGE -->
 								<div class="brand-logo">
-									<img class="img-fluid" src="{% static 'main/images/brand-7.png'%}" alt="brand-logo" />
+									<img class="img-fluid" src="{% static 'main/images/brand-17.png'%}" alt="brand-logo" />
 								</div>
 															
 								<!-- BRAND LOGO IMAGE -->
 								<div class="brand-logo">
-									<img class="img-fluid" src="{% static 'main/images/brand-8.png'%}" alt="brand-logo" />
+									<img class="img-fluid" src="{% static 'main/images/brand-18.png'%}" alt="brand-logo" />
 								</div>
 
 
