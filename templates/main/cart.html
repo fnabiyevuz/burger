@@ -61,53 +61,30 @@
 
 									<tbody>
 
-										<!-- CART ITEM #1 -->
-									    <tr>
-									      	<td data-label="Product" class="product-name">
+										{% for i in shop.shop_item.all %}
+											<tr>
+												<td data-label="Product" class="product-name">
 
-									      		<!-- Preview -->
-												<div class="cart-product-img"><img src="{% static 'main/images/menu/burger-07.png'%}" alt="cart-preview"></div>
+													<!-- Preview -->
+													<div class="cart-product-img"><img src="{{ i.product.image_prod.first.image.url }}" alt="cart-preview"></div>
 
-												<!-- Description -->
-												<div class="cart-product-desc">
-										      		<h5 class="h5-sm">Smokey House Burger</h5>
-										      		<p class="p-sm">Magna donec and ipsum gravida</p>
-										      	</div>
+													<!-- Description -->
+													<div class="cart-product-desc">
+														<h5 class="h5-sm"><a href="/product/{{i.product.id}}">{{ i.product.name }}</a></h5>
+														<p class="p-sm">{{ i.product.description|truncatechars:50 }}</p>
+													</div>
 
-									      	</td>
+												</td>
 
-									      	<td data-label="Price" class="product-price"><h5 class="h5-md">$8.95</h5></td>
-									      	<td data-label="Quantity" class="product-qty">
-									      		<input class="qty" type="number" min="1" max="20" value="1">
-									      	</td>
-									      	<td data-label="Total" class="product-price-total"><h5 class="h5-md">$8.95</h5></td>
-									      	<td data-label="Delete" class="td-trash"><i class="far fa-trash-alt"></i></td>
+												<td data-label="Price" class="product-price"><h5 class="h5-md">{% if i.product.discount %}${{i.product.discount}} {% else %}${{ i.product.price }} {% endif %}</h5></td>
+												<td data-label="Quantity" class="product-qty">
+													<input class="qty" type="number" min="1" max="20" value="{{i.quantity}}">
+												</td>
+												<td data-label="Total" class="product-price-total"><h5 class="h5-md">${{ i.total }}</h5></td>
+												<td data-label="Delete" class="td-trash"><a href="/delete-item/?id={{i.id}}">Delete</a></td>
 
-									    </tr>
-
-									    <!-- CART ITEM #2 -->
-									    <tr class="last-tr">
-
-									     	<td data-label="Product" class="product-name">
-
-									     		<!-- Preview -->
-												<div class="cart-product-img"><img src="{% static 'main/images/menu/pizza-04.png'%}" alt="cart-preview"></div>
-
-												<!-- Description -->
-												<div class="cart-product-desc">
-										     		<h5 class="h5-sm">BBQ Chicken Pizza</h5>
-										     		<p class="p-sm">Magna donec and ipsum gravida</p>
-										     	</div>
-
-									     	</td>
-
-									      	<td data-label="Price" class="product-price"><h5 class="h5-md">$27.00</h5></td>
-									      	<td data-label="Quantity" class="product-qty">
-									      		<input class="qty" type="number" min="1" max="20" value="1">
-									      	</td>
-									      	<td data-label="Total" class="product-price-total"><h5 class="h5-md">$27.00</h5></td>
-									      	<td data-label="Delete" class="td-trash"><i class="far fa-trash-alt"></i></td>
-									    </tr>
+											</tr>
+										{% endfor %}
 
 									</tbody>
 
@@ -122,29 +99,6 @@
 
 						<!-- DISCOUNT COUPON -->
 						<div class="col-lg-8">
-							<div class="discount-coupon row pt-15">
-
-								<!-- Form -->
-								<div class="col-md-8 col-lg-7">
-									<form class="discount-form">
-												
-										<div class="input-group">
-											<input type="text" class="form-control" placeholder="Coupon Code" id="discount-code">								
-											<span class="input-group-btn">
-												<button type="submit" class="btn btn-salmon tra-salmon-hover">Apply Coupon</button>
-											</span>										
-										</div>
-													
-									</form>	
-								</div>
-
-
-								<!-- Button -->
-								<div class="col-md-4 col-lg-5 text-right">
-									<a onClick="window.location.reload()" class="btn btn-md btn-salmon tra-salmon-hover">Update Cart</a>
-								</div>
-
-							</div>
 						</div>
 
 
@@ -152,27 +106,19 @@
 						<div class="col-lg-4">
 							<div class="cart-checkout bg-lightgrey">
 
-								<!-- Title -->
-								<h5 class="h5-lg">Cart Total</h5>
-
 								<!-- Table -->
 								<table>
 									<tbody>
-									    <tr>
-									      	<td>Subtotal</td>
-									      	<td> </td>
-									      	<td class="text-right">$35.95</td>
-									    </tr>
 									    <tr class="last-tr">
 									      	<td>Total</td>
 									      	<td> </td>
-									      	<td class="text-right">$35.95</td>
+									      	<td class="text-right">$ {{ shop.total }}</td>
 									    </tr>
 									  </tbody>
 								</table>
 
 								<!-- Button -->
-								<a href="#" class="btn btn-md btn-salmon tra-salmon-hover">Proceed To Checkout</a>
+								<a href="/checkout/?shp={{shop.id}}" class="btn btn-md btn-salmon tra-salmon-hover">Proceed To Checkout</a>
 
 							</div>
 						</div>	<!-- END CHECKOUT -->

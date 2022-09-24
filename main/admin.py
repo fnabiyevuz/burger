@@ -27,3 +27,13 @@ admin.site.register(Users, UserAdmin)
 admin.site.register(Categories)
 admin.site.register(Products)
 admin.site.register(PImanges)
+
+@admin.register(Shops)
+class ShopsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'client', 'total', 'status', 'date')
+    list_display_links = ('id', 'client', 'total', 'status', 'date')
+
+@admin.register(ShopItems)
+class ShopItemsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'shop', 'product', 'quantity', 'total')
+    list_display_links = ('id', 'shop', 'product', 'quantity', 'total')

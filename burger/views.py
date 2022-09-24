@@ -15,8 +15,19 @@ def signin(request):
 
         if user is not None:
             login(request, user)
-            messages.success(request, "You have successfully entered")
-            return redirect('/')
+            # messages.success(request, "You have successfully entered")
+            if request.user.is_client:
+                return redirect('/')
+            elif request.user.is_call_center:
+                return redirect('/call-center/')
+            elif request.user.is_cooker:
+                return redirect('/cooker/')
+            elif request.user.is_deliver:
+                return redirect('/deliver/')
+            elif request.user.is_cashier:
+                return redirect('/cashier/')
+            else:
+                return redirect('/sign-in/')
         else:
             messages.error(request, "Username or password is incorrect")
             return redirect('/sign-in/')
@@ -36,11 +47,11 @@ def signup(request):
 
         if user is not None:
             login(request, user)
-            messages.success(request, "You have successfully entered")
+            # messages.success(request, "You have successfully entered")
             return redirect('/sign-up/')
         else:
             Users.objects.create(username=username, password=make_password(password), first_name=first_name, last_name=last_name, phone=phone)
-            messages.success(request, "Account is created successfully!")
+            # messages.success(request, "Account is created successfully!")
             return redirect('/sign-in/')
     else:
         return render(request, 'sign-up.html')

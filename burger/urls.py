@@ -21,9 +21,10 @@ from django.conf import settings
 
 urlpatterns = [
     path('', include('main.urls')),
+    path('', include('control.urls')),
     path('sign-in/', signin),
     path('sign-up/', signup),
-    path('login/', signin),
+    path('logout/', LogOut),
     path('admin/', admin.site.urls),
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 

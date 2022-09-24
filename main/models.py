@@ -25,8 +25,8 @@ class Categories(models.Model):
 class Products(models.Model):
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, related_name='prod_cat')
     name = models.CharField(max_length=50)
-    price = models.PositiveIntegerField()
-    discount = models.PositiveIntegerField(null=True, blank=True)
+    price = models.FloatField()
+    discount = models.FloatField(null=True, blank=True)
     description = models.TextField()
     portion = models.PositiveIntegerField()
     callories = models.PositiveIntegerField()
@@ -43,14 +43,30 @@ class PImanges(models.Model):
         return self.product.name
     
 
-class Shop(models.Model):
-    sts = 
+class Shops(models.Model):
+    sts = (
+        ("opened", "opened"),
+        ("booked", "booked"),
+        ("canceled", "canceled"),
+        ("accepted", "accepted"),
+        ("sent", "sent"),
+        ("sold", "sold"),
+        ("paid", "paid"),
+    )
     client = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='shop_user')
-    total = models.PositiveIntegerField(default=0)
-    status = models.PositiveIntegerField(default=0)
+    total = models.FloatField(default=0)
+    status = models.CharField(choices=sts, max_length=10, default='opened')
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.client.first_name
+        return str(self.id)
 
 
+class ShopItems(models.Model):
+    shop = models.ForeignKey(Shops, on_delete=models.CASCADE, related_name='shop_item')
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='prod_item')
+    quantity = models.IntegerField(default=1)
+    total = models.FloatField()
+
+    def __str__(self):
+        return str(self.id)
